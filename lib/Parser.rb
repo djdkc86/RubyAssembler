@@ -11,7 +11,7 @@ class Parser
     !@array.nil? and @array.size > 1 
   end
   def advance
-  	@array.shift
+    @array.shift
     self
   end
   def commandType 
@@ -43,11 +43,12 @@ class Parser
   end	
 end
 
+
 raise "default parser should not have any commands" if Parser.new().hasMoreCommands == true
 
 raise "parser with data should have commands" if Parser.new(['@7','D=M']).hasMoreCommands == false
 
-raise "parser with two commands should have more " if Parser.new(['@7', 'D=M']).advance.advance.hasMoreCommands == true
+raise "parser with two commands should have more " if Parser.new(['@7','D=M']).advance.advance.hasMoreCommands == true
 
 raise "parser should recognize A command" unless Parser.new(['@7']).advance.commandType == "A_COMMAND"
 
